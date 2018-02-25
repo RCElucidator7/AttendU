@@ -17,7 +17,8 @@ Progress update 15/2/18:
 We have a basic idea on the layout of the app as seen below. The user will input their login information for the current class and the student will be brought to the home page, where they can view information on their grades/attendance.
 	 	
  	 	 
-![alt text](https://github.com/RCElucidator7/AttendU/tree/master/Images/login.PNG)
-![alt text](https://github.com/RCElucidator7/AttendU/tree/master/Images/home.PNG)
-![alt text](https://github.com/RCElucidator7/AttendU/tree/master/Images/classinfo.PNG)
-![alt text](https://github.com/RCElucidator7/AttendU/tree/master/Images/timetable.PNG)
+![Login](https://github.com/RCElucidator7/AttendU/tree/master/Images/login.PNG)
+
+![Home Page](https://github.com/RCElucidator7/AttendU/tree/master/Images/home.PNG)
+![Class Info](https://github.com/RCElucidator7/AttendU/tree/master/Images/classinfo.PNG)
+![Timetable](https://github.com/RCElucidator7/AttendU/tree/master/Images/timetable.PNG)

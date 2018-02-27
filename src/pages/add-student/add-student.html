@@ -1,0 +1,30 @@
+<!--
+  Generated template for the AddStudentPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar color="primary">
+    <ion-title>Add Student</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+
+  <ion-item>
+    <ion-label floating>Student Name</ion-label>
+    <ion-input type="text" [(ngModel)]="student.studentName"></ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-label floating>Class</ion-label>
+    <ion-input type="text" [(ngModel)]="student.studentClass"></ion-input>
+  </ion-item>
+
+  <button ion-button block (click)="addStudent(student)">Add Student</button>
+
+</ion-content>

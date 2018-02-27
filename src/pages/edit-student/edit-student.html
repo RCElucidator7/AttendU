@@ -1,0 +1,24 @@
+<ion-header>
+
+  <ion-navbar color="primary">
+    <ion-title>{{student.studentName}}</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+
+  <ion-item>
+    <ion-label floating>Student Name</ion-label>
+    <ion-input type="text" [(ngModel)]="student.studentName"></ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-label floating>Class</ion-label>
+    <ion-input type="text" [(ngModel)]="student.studentClass"></ion-input>
+  </ion-item>
+
+  <button ion-button block (click)="editStudent(student)">Edit Student</button>
+
+</ion-content>

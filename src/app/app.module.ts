@@ -13,13 +13,23 @@ import { MyApp } from './app.component';
 import { StudentListPage } from '../pages/student-list/student-list';
 import { AddStudentPage } from '../pages/add-student/add-student';
 import { EditStudentPage } from '../pages/edit-student/edit-student';
+import { LoginPage } from '../pages/login/login';
+import { AdminHomePage } from '../pages/admin-home/admin-home';
+import { TeacherListPage } from '../pages/teacher-list/teacher-list';
+import { AddTeacherPage } from '../pages/add-teacher/add-teacher';
+import { StudentHomePage } from '../pages/student-home/student-home';
 
 @NgModule({
   declarations: [
     MyApp,
     StudentListPage,
     AddStudentPage,
-    EditStudentPage
+    EditStudentPage,
+    LoginPage,
+    AdminHomePage,
+    TeacherListPage,
+    AddTeacherPage,
+    StudentHomePage
   ],
   imports: [
     BrowserModule,
@@ -33,7 +43,12 @@ import { EditStudentPage } from '../pages/edit-student/edit-student';
     MyApp,
     StudentListPage,
     AddStudentPage,
-    EditStudentPage
+    EditStudentPage,
+    LoginPage,
+    AdminHomePage,
+    TeacherListPage,
+    AddTeacherPage,
+    StudentHomePage
   ],
   providers: [
     StatusBar,

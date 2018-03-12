@@ -1,9 +1,9 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
-import { AngularFireDatabase, FirebaseObjectObservable} from 'angularfire2/database-deprecated'
+import { AngularFireDatabase, FirebaseListObservable} from 'angularfire2/database-deprecated'
 
 import { Subscription } from 'rxjs/Subscription';
-import { Student} from '../../models/student/student.interface';
+import { Student } from '../../models/student/student.interface';
 
 @Component({
   selector: 'page-edit-student',
@@ -12,7 +12,7 @@ import { Student} from '../../models/student/student.interface';
 export class EditStudentPage {
 
   studentSubscription: Subscription;
-  studentRef$: FirebaseObjectObservable<Student>;
+  studentRef$: FirebaseListObservable<Student[]>
 
   student = {} as Student;
 
@@ -26,19 +26,32 @@ export class EditStudentPage {
       console.log(studentID);
 
       //set scope of firebase object equal to selected student
-      this.studentRef$ = this.database.object(`student-list/${studentID}`);
+      this.studentRef$ = this.database.list('student');
+      //this.studentRef$ = this.database.object(`/student-list/${studentID}`);
 
-      //Subscribes to the object and assign result to this.student
+      /*/Subscribes to the object and assign result to this.student
       this.studentSubscription = this.studentRef$.subscribe(
-        student => this.student = student);
+        student => this.student = student);*/
   }
 
   editStudent(updatedStudent: Student){
     //Update firebase data with new data
-    this.studentRef$.update(updatedStudent);
+    this.studentRef$.update(updatedStudent.$key,{
+      studentName: updatedStudent.studentName,
+      studentClass: updatedStudent.studentClass
+    });
 
     //Send user back to main page
     this.navCtrl.pop();
+  }
+
+  addStudentSave(student: Student){
+    this.studentRef$.push({
+      $key: this.student.$key,
+      studentName: this.student.studentName,
+      studentClass: this.student.studentClass
+    });
+
   }
 
   ionViewDidLoad() {

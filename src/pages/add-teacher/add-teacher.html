@@ -1,0 +1,24 @@
+<ion-header>
+
+  <ion-navbar>
+    <ion-title color="primary">Add Teacher</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+
+    <ion-item>
+      <ion-label floating>Teacher Name</ion-label>
+      <ion-input type="text" [(ngModel)]="teacher.teacherName"></ion-input>
+    </ion-item>
+  
+    <ion-item>
+      <ion-label floating>Subject</ion-label>
+      <ion-input type="text" [(ngModel)]="teacher.teacherSubject"></ion-input>
+    </ion-item>
+  
+    <button ion-button block (click)="addTeacher(teacher)">Add Teacher</button>
+  
+  </ion-content>

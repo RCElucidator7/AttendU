@@ -3,6 +3,7 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { StudentListPage } from '../student-list/student-list';
 import { TeacherListPage } from '../teacher-list/teacher-list';
 import { StudentHomePage } from '../student-home/student-home';
+import { TeacherHomePage } from '../teacher-home/teacher-home';
 
 
 @Component({
@@ -24,6 +25,10 @@ export class AdminHomePage {
 
   navigateToStudentHome(){
     this.navCtrl.push(StudentHomePage)
+  }
+
+  navigateToTeacherHome(){
+    this.navCtrl.push(TeacherHomePage)
   }
 
   ionViewDidLoad() {

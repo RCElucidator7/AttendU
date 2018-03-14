@@ -35,6 +35,7 @@ export class EditStudentPage {
   }
 
   editStudent(updatedStudent: Student){
+    this.studentRef$.update(updatedStudent.studentName, updatedStudent.studentClass);
     //Update firebase data with new data
     this.studentRef$.update(updatedStudent.$key,{
       studentName: updatedStudent.studentName,

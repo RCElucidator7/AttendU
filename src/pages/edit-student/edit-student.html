@@ -19,6 +19,6 @@
     <ion-input type="text" [(ngModel)]="student.studentClass"></ion-input>
   </ion-item>
 
-  <button ion-button block (click)="editStudent(student)">Edit Student</button>
+  <button ion-button block (click)="editStudent(student.$key, student.studentName, student.studentClass)">Edit Student</button>
 
 </ion-content>

@@ -5,6 +5,8 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 import { StatusBar } from '@ionic-native/status-bar';
 import { AngularFireModule} from 'angularfire2';
 import { AngularFireDatabaseModule } from 'angularfire2/database-deprecated';
+import { AngularFirestoreModule, AngularFirestore } from 'angularfire2/firestore';
+import { AngularFireAuth, AngularFireAuthModule } from 'angularfire2/auth';
 
 import { FIREBASE_CREDENTIALS} from './firebase.credentials';
 
@@ -18,6 +20,7 @@ import { AdminHomePage } from '../pages/admin-home/admin-home';
 import { TeacherListPage } from '../pages/teacher-list/teacher-list';
 import { AddTeacherPage } from '../pages/add-teacher/add-teacher';
 import { StudentHomePage } from '../pages/student-home/student-home';
+import { TeacherHomePage } from '../pages/teacher-home/teacher-home';
 
 @NgModule({
   declarations: [
@@ -29,14 +32,17 @@ import { StudentHomePage } from '../pages/student-home/student-home';
     AdminHomePage,
     TeacherListPage,
     AddTeacherPage,
-    StudentHomePage
+    StudentHomePage,
+    TeacherHomePage
   ],
   imports: [
     BrowserModule,
     IonicModule.forRoot(MyApp),
     //Initalise afire with creds
     AngularFireModule.initializeApp(FIREBASE_CREDENTIALS),
-    AngularFireDatabaseModule
+    AngularFireDatabaseModule,
+    AngularFirestoreModule,
+    AngularFireAuthModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -48,7 +54,8 @@ import { StudentHomePage } from '../pages/student-home/student-home';
     AdminHomePage,
     TeacherListPage,
     AddTeacherPage,
-    StudentHomePage
+    StudentHomePage,
+    TeacherHomePage
   ],
   providers: [
     StatusBar,

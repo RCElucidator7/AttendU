@@ -10,22 +10,21 @@
   <form id="attendU-form1">
     <div class="spacer" style="width:283.2px;height:75px;" id="attendU-spacer1"></div>
     <ion-list id="attendU-list1">
+      <ion-label>Email</ion-label>
       <ion-item id="attendU-input1">
-        <ion-label>
-          Student Name
-        </ion-label>
-        <ion-input type="text" placeholder="Name"></ion-input>
+        <ion-input type="text" name="Name" [(ngModel)]="user.email"></ion-input>
       </ion-item>
+      <ion-label>Password</ion-label>
       <ion-item id="attendU-input2">
-        <ion-label>
-          Teacher Code
-        </ion-label>
-        <ion-input type="password" placeholder="Code"></ion-input>
+        <ion-input type="password" name="Code" [(ngModel)]="user.password"></ion-input>
       </ion-item>
     </ion-list>
     <div class="spacer" style="width:283.2px;height:60px;" id="attendU-spacer2"></div>
   </form>
   <button id="attendU-button1" ion-button color="calm" block large style="color:#FFFFFF;" (click)="navigateToAdminHome()">
+    <ion-icon name="checkmark-circle-outline"></ion-icon>
+  </button>
+  <button id="attendU-button2" ion-button color="danger" block large style="color:#FFFFFF;" (click)="login(user)">
     <ion-icon name="checkmark-circle-outline"></ion-icon>
   </button>
 </ion-content>

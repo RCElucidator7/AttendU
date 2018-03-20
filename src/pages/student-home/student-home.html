@@ -16,9 +16,16 @@
     <ion-item-divider></ion-item-divider>
 
     <ion-list-header>Class details</ion-list-header>
-    <button ion-item>Current Class</button>
-    <button ion-item>Teacher</button>
-    <button ion-item>Class Attendance</button>
+    <ion-item>Current Class:
+    <!--<ion-item *ngFor="let student of studentListRef$ | async" (click)="selectStudent(student)">-->
+      <h3>student.studentClass</h3>
+    </ion-item>  <!--</ion-item>-->
+    <ion-item>Teacher:
+      <h3>student.studentClass.teacher</h3>
+    </ion-item>
+    <ion-item>Class Attendance
+      <h3>student.attendance</h3>
+    </ion-item>
 
     <ion-item-divider></ion-item-divider>
 

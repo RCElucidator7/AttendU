@@ -1,5 +1,5 @@
 export interface Student {
-    $key?: string;
+    $uid?: string;
     studentName: string;
     studentClass: string;
 }

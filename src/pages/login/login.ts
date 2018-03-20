@@ -7,6 +7,7 @@ import { AngularFirestore, AngularFirestoreCollection } from 'angularfire2/fires
 import { Observable } from 'rxjs/Observable';
 import { User } from '../../models/users/users.interface';
 import { AngularFireAuth } from 'angularfire2/auth';
+import { StudentHomePage } from '../student-home/student-home';
 
 @Component({
   selector: 'page-login',
@@ -32,6 +33,12 @@ export class LoginPage {
     try{
       const result = this.auth.auth.signInAndRetrieveDataWithEmailAndPassword(user.email, user.password)
       console.log(result)
+      if(user.email == "admin@scoil.ie"){
+        this.navCtrl.setRoot(AdminHomePage)
+      }
+      if(user.email == "hughbrady@scoil.ie"){
+        this.navCtrl.setRoot(StudentHomePage)
+      }
     }
     catch(e){
       console.error(e);

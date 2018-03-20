@@ -31,7 +31,7 @@ export class StudentListPage {
           text: `Edit`,
           handler: () => {
             //Send user to edit page
-            this.navCtrl.push(EditStudentPage, {studentID: studentSelect.$key});
+            this.navCtrl.push(EditStudentPage, {studentID: studentSelect.$uid});
           }
         },
         {
@@ -39,7 +39,7 @@ export class StudentListPage {
           role: `destructive`,
           handler: () => {
             //Delete current student
-            this.studentListRef$.remove(studentSelect.$key);
+            this.studentListRef$.remove(studentSelect.$uid);
           }
         },
         {

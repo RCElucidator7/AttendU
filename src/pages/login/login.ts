@@ -23,9 +23,6 @@ export class LoginPage {
    
     //this.studentListRef = this.afs.collection('Student');
     //this.student$ = this.studentListRef.valueChanges();
-    
-    
-  
   }
 
   async login(user: User){
@@ -38,11 +35,7 @@ export class LoginPage {
     }
   }
 
-  
-
-  navigateToAdminHome(){
-    
+  navigateToAdminHome(){ 
     this.navCtrl.setRoot(AdminHomePage)
   }
-
 }

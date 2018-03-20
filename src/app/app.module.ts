@@ -21,6 +21,8 @@ import { TeacherListPage } from '../pages/teacher-list/teacher-list';
 import { AddTeacherPage } from '../pages/add-teacher/add-teacher';
 import { StudentHomePage } from '../pages/student-home/student-home';
 import { TeacherHomePage } from '../pages/teacher-home/teacher-home';
+import { StudentAttendPage } from '../pages/student-attend/student-attend';
+
 
 @NgModule({
   declarations: [
@@ -33,7 +35,8 @@ import { TeacherHomePage } from '../pages/teacher-home/teacher-home';
     TeacherListPage,
     AddTeacherPage,
     StudentHomePage,
-    TeacherHomePage
+    TeacherHomePage,
+    StudentAttendPage
   ],
   imports: [
     BrowserModule,
@@ -55,7 +58,8 @@ import { TeacherHomePage } from '../pages/teacher-home/teacher-home';
     TeacherListPage,
     AddTeacherPage,
     StudentHomePage,
-    TeacherHomePage
+    TeacherHomePage,
+    StudentAttendPage
   ],
   providers: [
     StatusBar,

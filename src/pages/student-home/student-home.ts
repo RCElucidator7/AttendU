@@ -1,12 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
-
-/**
- * Generated class for the StudentHomePage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
+import { StudentAttendPage } from '../student-attend/student-attend';
 
 @IonicPage()
 @Component({
@@ -16,6 +10,10 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 export class StudentHomePage {
 
   constructor(public navCtrl: NavController, public navParams: NavParams) {
+  }
+
+  navigateToStudentAttend(){
+    this.navCtrl.push(StudentAttendPage)
   }
 
   ionViewDidLoad() {

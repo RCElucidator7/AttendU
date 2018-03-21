@@ -23,6 +23,7 @@ import { StudentHomePage } from '../pages/student-home/student-home';
 import { TeacherHomePage } from '../pages/teacher-home/teacher-home';
 import { StudentDetailsPage } from '../pages/student-details/student-details';
 import { StudentAttendPage } from '../pages/student-attend/student-attend';
+import { TeacherAttendPage } from '../pages/teacher-attend/teacher-attend';
 
 
 @NgModule({
@@ -38,7 +39,8 @@ import { StudentAttendPage } from '../pages/student-attend/student-attend';
     StudentHomePage,
     TeacherHomePage,
     StudentDetailsPage,
-    StudentAttendPage
+    StudentAttendPage,
+    TeacherAttendPage
   ],
   imports: [
     BrowserModule,
@@ -62,7 +64,8 @@ import { StudentAttendPage } from '../pages/student-attend/student-attend';
     StudentHomePage,
     TeacherHomePage,
     StudentDetailsPage,
-    StudentAttendPage
+    StudentAttendPage,
+    TeacherAttendPage
   ],
   providers: [
     StatusBar,

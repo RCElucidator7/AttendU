@@ -13,7 +13,7 @@ export class TeacherAttendPage {
   code$: FirebaseListObservable<{}>
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public toastCtrl: ToastController, private database: AngularFireDatabase) {
-    //List of students
+    //List for code
     this.code$ = this.database.list('code');
   }
 

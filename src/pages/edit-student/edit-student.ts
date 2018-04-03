@@ -35,10 +35,10 @@ export class EditStudentPage {
   }
 
   editStudent(updatedStudent: Student){
-    this.studentRef$.update(updatedStudent.studentName, updatedStudent.studentClass);
     //Update firebase data with new data
     this.studentRef$.update(updatedStudent.$key,{
-      studentName: updatedStudent.studentName,
+      studentFirstName: updatedStudent.studentFirstName,
+      studentLastName: updatedStudent.studentLastName,
       studentClass: updatedStudent.studentClass
     });
 
@@ -49,8 +49,11 @@ export class EditStudentPage {
   addStudentSave(student: Student){
     this.studentRef$.push({
       $key: this.student.$key,
-      studentName: this.student.studentName,
-      studentClass: this.student.studentClass
+      studentFirstName: this.student.studentFirstName,
+      studentLastName: this.student.studentLastName,
+      studentClass: this.student.studentClass,
+      email: this.student.email,
+      password: this.student.password
     });
 
   }

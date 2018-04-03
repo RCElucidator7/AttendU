@@ -1,0 +1,29 @@
+<!--
+  Generated template for the TimetablePage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>timetable</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+
+    <ion-list>
+        <ion-item *ngFor="let monday of timetable$ | async">
+          <h2>(9: 00): {{timetable.monday.nine}}</h2>
+          <h2>(10: 00): {{timetable.monday.ten}}</h2>
+          <h3>(11: 00): {{timetable.monday.eleven}}</h3>
+          <h3>(1: 00): {{timetable.monday.one}}</h3>
+          <h3>(2: 00): {{timetable.monday.two}}</h3>
+          <h3>(3: 00): {{timetable.monday.three}}</h3>
+          </ion-item>
+      </ion-list>
+
+</ion-content>

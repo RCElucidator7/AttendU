@@ -16,8 +16,10 @@
 
     <ion-list>
         <ion-item *ngFor="let teacher of teacherListRef$ | async" (click)="selectTeacher(teacher)">
-          <h2>Teacher Name: {{teacher.teacherName}}</h2>
+          <h2>Teacher First Name: {{teacher.teacherFirstName}}</h2>
+          <h2>Teacher Last Name: {{teacher.teacherLastName}}</h2>
           <h3>Subject: {{teacher.teacherSubject}}</h3>
+          <h3>Email: {{teacher.email}}</h3><h3>Password: {{teacher.password}}</h3>
           </ion-item>
       </ion-list>
 

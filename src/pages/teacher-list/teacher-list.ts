@@ -27,7 +27,7 @@ export class TeacherListPage {
   selectTeacher(teacherSelect: Teacher){
     //Display action sheet with options
     this.actionSheetCtrl.create({
-      title: `${teacherSelect.teacherName}`,
+      title: `${teacherSelect.teacherFirstName}`,
       buttons: [
         {
           text: `Delete`,

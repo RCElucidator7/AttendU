@@ -17,11 +17,11 @@
     <div class="spacer" style="width:283.2px;height:75px;"></div>
       <ion-label>Attendance Code</ion-label>
       <ion-item>
-        <ion-input type="text"></ion-input>
+        <ion-input type="text" id="code"></ion-input>
       </ion-item>
     <div class="spacer" style="width:283.2px;height:60px;" id="attendU-spacer2"></div>
   </form>
-  <button id="attend" ion-button color="calm" block large style="color:#FFFFFF;" (click)="attend()">
+  <button id="attend" ion-button color="calm" block large style="color:#FFFFFF;" (click)="attend(code, student)">
     <ion-icon name="checkmark-circle-outline"></ion-icon>
   </button>
 

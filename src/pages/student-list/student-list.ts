@@ -25,7 +25,7 @@ export class StudentListPage {
   selectStudent(studentSelect: Student){
     //Display action sheet with options
     this.actionSheetCtrl.create({
-      title: `${studentSelect.studentName}`,
+      title: `${studentSelect.studentFirstName}`,
       buttons: [
         {
           text: `Edit`,

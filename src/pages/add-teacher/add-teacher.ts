@@ -24,8 +24,11 @@ export class AddTeacherPage {
   addTeacher(teacher: Teacher){
     //Creates object and pushes to firebase
     this.teacherRef$.push({
-      teacherName: this.teacher.teacherName,
-      teacherSubject: this.teacher.teacherSubject
+      teacherFirstName: this.teacher.teacherFirstName,
+      teacherLastName: this.teacher.teacherLastName,
+      teacherSubject: this.teacher.teacherSubject,
+      email: this.teacher.teacherFirstName + this.teacher.teacherLastName + "@teacher.ie",
+      password: "teacher123"
     });
 
     this.navCtrl.pop();

@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, ToastController } from 'ionic-angular';
 import { AdminHomePage } from '../admin-home/admin-home';
 import { FirebaseListObservable, AngularFireDatabase } from 'angularfire2/database-deprecated';
 import { Student } from '../../models/student/student.interface';
@@ -8,6 +8,8 @@ import { Observable } from 'rxjs/Observable';
 import { User } from '../../models/users/users.interface';
 import { AngularFireAuth } from 'angularfire2/auth';
 import { StudentHomePage } from '../student-home/student-home';
+import { isTrueProperty } from 'ionic-angular/util/util';
+import { TeacherHomePage } from '../teacher-home/teacher-home';
 
 @Component({
   selector: 'page-login',
@@ -20,8 +22,7 @@ export class LoginPage {
   //student$: Observable<Student[]>;
 
   constructor(public navCtrl: NavController, public navParams: NavParams, private afs: AngularFirestore, 
-              private auth: AngularFireAuth) {
-   
+              private auth: AngularFireAuth, public toastCtrl: ToastController) {
     //this.studentListRef = this.afs.collection('Student');
     //this.student$ = this.studentListRef.valueChanges();
   }
@@ -33,8 +34,18 @@ export class LoginPage {
       if(user.email == "admin@scoil.ie"){
         this.navCtrl.setRoot(AdminHomePage)
       }
-      if(user.email == "hughbrady@scoil.ie"){
+      if(user.email.endsWith("@scoil.ie")){
         this.navCtrl.setRoot(StudentHomePage)
+      }
+      if(user.email.endsWith("@teacher.ie")){
+        this.navCtrl.setRoot(TeacherHomePage)
+      }
+      else{
+        let toast = this.toastCtrl.create({
+          message: 'User ID or password is incorrect',
+          duration: 5000
+        });
+        toast.present();
       }
     }
     catch(e){

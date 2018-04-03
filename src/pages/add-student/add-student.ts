@@ -23,8 +23,11 @@ export class AddStudentPage {
   addStudent(student: Student){
     //Creates object and pushes to firebase
     this.studentRef$.push({
-      studentName: this.student.studentName,
-      studentClass: this.student.studentClass
+      studentFirstName: this.student.studentFirstName,
+      studentLastName: this.student.studentLastName,
+      studentClass: this.student.studentClass,
+      email: this.student.studentFirstName + this.student.studentLastName + "@scoil.ie",
+      password: "password123"
     });
 
     //this.student = {} as Student;

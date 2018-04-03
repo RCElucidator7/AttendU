@@ -1,21 +1,20 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { FirebaseListObservable, AngularFireDatabase } from 'angularfire2/database-deprecated';
+import { Student } from '../../models/student/student.interface';
 
-/**
- * Generated class for the StudentDetailsPage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
-
-@IonicPage()
 @Component({
   selector: 'page-student-details',
   templateUrl: 'student-details.html',
 })
 export class StudentDetailsPage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  student = {} as Student
+
+  studentDetailsRef$: FirebaseListObservable<Student[]>;
+
+  constructor(public navCtrl: NavController, public navParams: NavParams, public database: AngularFireDatabase) {
+    this.studentDetailsRef$ = this.database.list('student');
   }
 
   ionViewDidLoad() {

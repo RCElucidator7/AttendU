@@ -15,8 +15,10 @@
 
   <ion-list>
     <ion-item *ngFor="let student of studentListRef$ | async" (click)="selectStudent(student)">
-      <h2>Student Name: {{student.studentName}}</h2>
+      <h2>Student First Name: {{student.studentFirstName}}</h2>
+      <h2>Student Last Name: {{student.studentLastName}}</h2>
       <h3>Class: {{student.studentClass}}</h3>
+      <h3>Email: {{student.email}}</h3><h3> Password: {{student.password}}</h3>
       </ion-item>
   </ion-list>
 

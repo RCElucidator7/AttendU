@@ -16,14 +16,20 @@
 <ion-content padding>
 
   <ion-item>
-    <ion-label floating>Student Name</ion-label>
-    <ion-input type="text" [(ngModel)]="student.studentName"></ion-input>
+    <ion-label floating>Student First Name</ion-label>
+    <ion-input type="text" [(ngModel)]="student.studentFirstName"></ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-label floating>Student Last Name</ion-label>
+    <ion-input type="text" [(ngModel)]="student.studentLastName"></ion-input>
   </ion-item>
 
   <ion-item>
     <ion-label floating>Class</ion-label>
     <ion-input type="text" [(ngModel)]="student.studentClass"></ion-input>
   </ion-item>
+
 
   <button ion-button block (click)="addStudent(student)">Add Student</button>
 

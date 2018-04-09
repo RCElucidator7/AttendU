@@ -1,0 +1,23 @@
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>teacher-grade-edit</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+  <ion-item>
+    <ion-label floating>Subject</ion-label>
+    <ion-input type="text" [(ngModel)]="student.grade.subject"></ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-label floating>Grade</ion-label>
+    <ion-input type="text" [(ngModel)]="student.grade.grade"></ion-input>
+  </ion-item>
+
+  <button ion-button block (click)="addGradeSave()">Save</button>
+
+</ion-content>

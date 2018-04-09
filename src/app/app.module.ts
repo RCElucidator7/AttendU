@@ -27,7 +27,6 @@ import { TeacherAttendPage } from '../pages/teacher-attend/teacher-attend';
 import { TeacherGradesPage } from '../pages/teacher-grades/teacher-grades';
 import { TeacherGradeEditPage } from '../pages/teacher-grade-edit/teacher-grade-edit';
 
-
 @NgModule({
   declarations: [
     MyApp,

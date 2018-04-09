@@ -1,11 +1,14 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, ActionSheetController } from 'ionic-angular';
+import { NavController, NavParams, ActionSheetController } from 'ionic-angular';
 import { FirebaseListObservable, AngularFireDatabase } from 'angularfire2/database-deprecated';
-
-import { AddStudentPage } from '../add-student/add-student';
 import { Student } from '../../models/student/student.interface';
 import { EditStudentPage } from '../edit-student/edit-student'; 
+import { TeacherGradeEditPage } from '../teacher-grade-edit/teacher-grade-edit';
 
+@Component({
+  selector: 'page-teacher-grades',
+  templateUrl: 'teacher-grades.html',
+})
 export class TeacherGradesPage {
 
   studentListRef$: FirebaseListObservable<Student[]>;
@@ -27,7 +30,7 @@ export class TeacherGradesPage {
           text: `Edit`,
           handler: () => {
             //Send user to edit page
-            this.navCtrl.push(EditStudentPage, {studentID: studentSelect.$key});
+            this.navCtrl.push(TeacherGradeEditPage);
           }
         },
         {

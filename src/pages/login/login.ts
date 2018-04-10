@@ -3,13 +3,13 @@ import { IonicPage, NavController, NavParams, ToastController } from 'ionic-angu
 import { AdminHomePage } from '../admin-home/admin-home';
 import { FirebaseListObservable, AngularFireDatabase } from 'angularfire2/database-deprecated';
 import { Student } from '../../models/student/student.interface';
-import { AngularFirestore, AngularFirestoreCollection } from 'angularfire2/firestore';
 import { Observable } from 'rxjs/Observable';
 import { User } from '../../models/users/users.interface';
 import { AngularFireAuth } from 'angularfire2/auth';
 import { StudentHomePage } from '../student-home/student-home';
 import { isTrueProperty } from 'ionic-angular/util/util';
 import { TeacherHomePage } from '../teacher-home/teacher-home';
+import { query } from '@angular/core/src/animation/dsl';
 
 @Component({
   selector: 'page-login',
@@ -20,24 +20,26 @@ export class LoginPage {
   user = {} as User;
   //studentListRef: AngularFirestoreCollection<Student>;
   //student$: Observable<Student[]>;
+  studentListRef$: FirebaseListObservable<Student[]>;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, private afs: AngularFirestore, 
+  constructor(public navCtrl: NavController, public navParams: NavParams, private db: AngularFireDatabase, 
               private auth: AngularFireAuth, public toastCtrl: ToastController) {
-    //this.studentListRef = this.afs.collection('Student');
+    this.studentListRef$ = this.db.list('Student');
     //this.student$ = this.studentListRef.valueChanges();
   }
 
   async login(user: User){
     try{
-      const result = this.auth.auth.signInAndRetrieveDataWithEmailAndPassword(user.email, user.password)
-      console.log(result)
+      //const result = this.auth.auth.signInAndRetrieveDataWithEmailAndPassword(user.email, user.password)
+      //console.log(result)
       if(user.email == "admin@scoil.ie"){
+       // this.studentListRef$.
         this.navCtrl.setRoot(AdminHomePage)
       }
-      if(user.email.endsWith("@scoil.ie")){
+      else if(user.email.endsWith("@scoil.ie")){
         this.navCtrl.setRoot(StudentHomePage)
       }
-      if(user.email.endsWith("@teacher.ie")){
+      else if(user.email.endsWith("@teacher.ie")){
         this.navCtrl.setRoot(TeacherHomePage)
       }
       else{

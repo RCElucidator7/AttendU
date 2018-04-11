@@ -3,7 +3,6 @@ import { IonicPage, NavController, NavParams, ToastController } from 'ionic-angu
 import { AdminHomePage } from '../admin-home/admin-home';
 import { FirebaseListObservable, AngularFireDatabase } from 'angularfire2/database-deprecated';
 import { Student } from '../../models/student/student.interface';
-import { AngularFirestore, AngularFirestoreCollection } from 'angularfire2/firestore';
 import { Observable } from 'rxjs/Observable';
 import { User } from '../../models/users/users.interface';
 import { AngularFireAuth } from 'angularfire2/auth';
@@ -18,13 +17,11 @@ import { TeacherHomePage } from '../teacher-home/teacher-home';
 export class LoginPage {
 
   user = {} as User;
-  //studentListRef: AngularFirestoreCollection<Student>;
-  //student$: Observable<Student[]>;
+  studentListRef$: FirebaseListObservable<Student[]>;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, private afs: AngularFirestore, 
+  constructor(public navCtrl: NavController, public navParams: NavParams, private db: AngularFireDatabase, 
               private auth: AngularFireAuth, public toastCtrl: ToastController) {
-    //this.studentListRef = this.afs.collection('Student');
-    //this.student$ = this.studentListRef.valueChanges();
+                this.studentListRef$ = this.db.list('Student');
   }
 
   async login(user: User){
@@ -34,10 +31,10 @@ export class LoginPage {
       if(user.email == "admin@scoil.ie"){
         this.navCtrl.setRoot(AdminHomePage)
       }
-      if(user.email.endsWith("@scoil.ie")){
+      else if(user.email.endsWith("@scoil.ie")){
         this.navCtrl.setRoot(StudentHomePage)
       }
-      if(user.email.endsWith("@teacher.ie")){
+      else if(user.email.endsWith("@teacher.ie")){
         this.navCtrl.setRoot(TeacherHomePage)
       }
       else{

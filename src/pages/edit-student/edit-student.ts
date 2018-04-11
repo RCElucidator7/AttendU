@@ -11,8 +11,8 @@ import { Student } from '../../models/student/student.interface';
 })
 export class EditStudentPage {
 
-  studentSubscription: Subscription;
   studentRef$: FirebaseListObservable<Student[]>
+  tempRef$: FirebaseListObservable<Student[]>
 
   student = {} as Student;
 
@@ -20,21 +20,18 @@ export class EditStudentPage {
     public navParams: NavParams,
     public database: AngularFireDatabase) {
 
-      //Capture ID as a nav param
       const studentID = this.navParams.get('studentID');
 
-      console.log(studentID);
-
       //set scope of firebase object equal to selected student
-      this.studentRef$ = this.database.list('student');
-      //this.studentRef$ = this.database.object(`/student-list/${studentID}`);
+      this.studentRef$ = this.database.list('student/'+studentID);
+      this.tempRef$ = this.database.list('student');
 
       /*/Subscribes to the object and assign result to this.student
       this.studentSubscription = this.studentRef$.subscribe(
         student => this.student = student);*/
   }
 
-  editStudent(updatedStudent: Student){
+  /*editStudent(updatedStudent: Student){
     //Update firebase data with new data
     this.studentRef$.update(updatedStudent.$key,{
       studentFirstName: updatedStudent.studentFirstName,
@@ -44,11 +41,12 @@ export class EditStudentPage {
 
     //Send user back to main page
     this.navCtrl.pop();
-  }
+  }*/
 
   addStudentSave(student: Student){
-    this.studentRef$.push({
-      $key: this.student.$key,
+    this.studentRef$.remove();
+
+    this.tempRef$.push({
       studentFirstName: this.student.studentFirstName,
       studentLastName: this.student.studentLastName,
       studentClass: this.student.studentClass,
@@ -56,15 +54,12 @@ export class EditStudentPage {
       password: this.student.password
     });
 
+    //Send user back to main page
+    this.navCtrl.pop();
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad EditStudentPage');
-  }
-
-  ionViewWillLeave() {
-    //Unsubscribe from the Observable when leaving the page
-    this.studentSubscription.unsubscribe();
   }
 
 }

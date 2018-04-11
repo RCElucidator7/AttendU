@@ -30,10 +30,7 @@ export class AddStudentPage {
       password: "password123"
     });
 
-    //this.student = {} as Student;
-
     this.navCtrl.pop();
-
   }
 
 }

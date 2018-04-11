@@ -30,7 +30,7 @@ export class TeacherGradesPage {
           text: `Edit`,
           handler: () => {
             //Send user to edit page
-            this.navCtrl.push(TeacherGradeEditPage);
+            this.navCtrl.push(TeacherGradeEditPage, {studentID: studentSelect.$key});
           }
         },
         {

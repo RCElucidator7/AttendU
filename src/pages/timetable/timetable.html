@@ -7,23 +7,81 @@
 <ion-header>
 
   <ion-navbar>
-    <ion-title>timetable</ion-title>
+    <ion-title>Timetable</ion-title>
   </ion-navbar>
 
 </ion-header>
 
-
 <ion-content padding>
 
-    <ion-list>
-        <ion-item *ngFor="let monday of timetable$ | async">
-          <h2>(9: 00): {{timetable.monday.nine}}</h2>
-          <h2>(10: 00): {{timetable.monday.ten}}</h2>
-          <h3>(11: 00): {{timetable.monday.eleven}}</h3>
-          <h3>(1: 00): {{timetable.monday.one}}</h3>
-          <h3>(2: 00): {{timetable.monday.two}}</h3>
-          <h3>(3: 00): {{timetable.monday.three}}</h3>
-          </ion-item>
-      </ion-list>
+  <ion-grid>
+    <ion-row color="primary">
+      <ion-col>Time</ion-col>
+      <ion-col>Mon</ion-col>
+      <ion-col>Tues</ion-col>
+      <ion-col>Wed</ion-col>
+      <ion-col>Thur</ion-col>
+      <ion-col>Fri</ion-col>
+    </ion-row>
+
+    <ion-row>
+        <ion-col col-2>9am</ion-col>
+        <ion-col col-2>Math</ion-col>
+        <ion-col col-2>Eng</ion-col>
+        <ion-col col-2>Hist</ion-col>
+        <ion-col col-2>Sci</ion-col>
+        <ion-col col-2>Irish</ion-col>
+    </ion-row>
+
+    <ion-row>
+        <ion-col col-2>10am</ion-col>
+        <ion-col col-2>Geog</ion-col>
+        <ion-col col-2>Math</ion-col>
+        <ion-col col-2>Math</ion-col>
+        <ion-col col-2>Eng</ion-col>
+        <ion-col col-2>Fre</ion-col>
+    </ion-row>
+
+    <ion-row>
+        <ion-col col-2>11am</ion-col>
+        <ion-col col-2>Eng</ion-col>
+        <ion-col col-2>Math</ion-col>
+        <ion-col col-2>Irish</ion-col>
+        <ion-col col-2>Eng</ion-col>
+        <ion-col col-2>Fre</ion-col>
+    </ion-row>
+
+    <ion-row>
+        <ion-col col-2>12pm</ion-col>
+        <ion-col col>Lunch</ion-col>
+    </ion-row>
+
+    <ion-row>
+        <ion-col col-2>1pm</ion-col>
+        <ion-col col-2>Irish</ion-col>
+        <ion-col col-2>SPHE</ion-col>
+        <ion-col col-2>Math</ion-col>
+        <ion-col col-2>Eng</ion-col>
+        <ion-col col-2>Fre</ion-col>
+    </ion-row>
+
+    <ion-row>
+        <ion-col col-2>2pm</ion-col>
+        <ion-col col-2>Sci</ion-col>
+        <ion-col col-2>SPHE</ion-col>
+        <ion-col col-2>Math</ion-col>
+        <ion-col col-2>Eng</ion-col>
+        <ion-col col-2>Fre</ion-col>
+    </ion-row>
+
+    <ion-row>
+        <ion-col col-2>3pm</ion-col>
+        <ion-col col-2>Fre</ion-col>
+        <ion-col col-2>SPHE</ion-col>
+        <ion-col col-2>Math</ion-col>
+        <ion-col col-2>Eng</ion-col>
+        <ion-col col-2>Fre</ion-col>
+    </ion-row>
+  </ion-grid>
 
 </ion-content>

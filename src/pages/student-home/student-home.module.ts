@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { IonicPageModule } from 'ionic-angular';
+import { IonicPageModule, NavController, NavParams } from 'ionic-angular';
 import { StudentHomePage } from './student-home';
 
 @NgModule({
@@ -10,4 +10,6 @@ import { StudentHomePage } from './student-home';
     IonicPageModule.forChild(StudentHomePage),
   ],
 })
-export class StudentHomePageModule {}
+export class StudentHomePageModule {
+
+}

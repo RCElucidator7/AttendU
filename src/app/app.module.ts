@@ -26,6 +26,7 @@ import { StudentAttendPage } from '../pages/student-attend/student-attend';
 import { TeacherAttendPage } from '../pages/teacher-attend/teacher-attend';
 import { TeacherGradesPage } from '../pages/teacher-grades/teacher-grades';
 import { TeacherGradeEditPage } from '../pages/teacher-grade-edit/teacher-grade-edit';
+import { TimetablePage } from '../pages/timetable/timetable';
 
 @NgModule({
   declarations: [
@@ -43,7 +44,8 @@ import { TeacherGradeEditPage } from '../pages/teacher-grade-edit/teacher-grade-
     StudentAttendPage,
     TeacherAttendPage,
     TeacherGradesPage,
-    TeacherGradeEditPage
+    TeacherGradeEditPage,
+    TimetablePage
   ],
   imports: [
     BrowserModule,
@@ -70,7 +72,8 @@ import { TeacherGradeEditPage } from '../pages/teacher-grade-edit/teacher-grade-
     StudentAttendPage,
     TeacherAttendPage,
     TeacherGradesPage,
-    TeacherGradeEditPage
+    TeacherGradeEditPage,
+    TimetablePage
   ],
   providers: [
     StatusBar,

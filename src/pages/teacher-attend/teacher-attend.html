@@ -17,9 +17,9 @@
   <form>
     <div class="spacer" style="width:283.2px;height:75px;"></div>
       <ion-label>Attendance Code</ion-label>
-      <ion-label *ngFor="let code of code$ | async">
-        <h4>{{code.generateCode}}</h4>
-      </ion-label>
+      <ion-item>
+        <ion-input type="text"></ion-input>
+      </ion-item>
     <div class="spacer" style="width:283.2px;height:60px;" id="attendU-spacer2"></div>
   </form>
   <button ion-button color="calm" block large style="color:#FFFFFF;" (click)="generateCode()">

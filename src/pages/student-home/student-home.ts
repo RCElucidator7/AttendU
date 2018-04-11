@@ -5,6 +5,7 @@ import { StudentAttendPage } from '../student-attend/student-attend';
 import { AngularFireDatabase, FirebaseListObservable } from 'angularfire2/database-deprecated';
 import { AngularFireAuth } from 'angularfire2/auth';
 import { Student } from '../../models/student/student.interface';
+import { TimetablePage } from '../timetable/timetable';
 
 @Component({
   selector: 'page-student-home',
@@ -25,6 +26,15 @@ export class StudentHomePage {
     this.navCtrl.push(StudentAttendPage)
   }
 
+  navToTimetable(){
+    this.navCtrl.push(TimetablePage)
+    console.log('Opening timetable');
+  }
+
+  navToDetails(){
+    this.navCtrl.push(StudentDetailsPage)
+  }
+
   getStudentList(): FirebaseListObservable<Student[]> {
     if(!this.studentID) return;
     this.students = this.db.list('student/${this.studentID}');
@@ -33,10 +43,6 @@ export class StudentHomePage {
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad StudentHomePage');
-  }
-
-  navToDetails(){
-    this.navCtrl.push(StudentDetailsPage)
   }
 
 }

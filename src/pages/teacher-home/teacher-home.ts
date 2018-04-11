@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { TeacherAttendPage } from '../teacher-attend/teacher-attend';
 import { TeacherGradesPage } from '../teacher-grades/teacher-grades';
+import { TimetablePage } from '../timetable/timetable';
 
 
 @Component({
@@ -19,6 +20,11 @@ export class TeacherHomePage {
 
   navToGrades(){
     this.navCtrl.push(TeacherGradesPage)
+  }
+
+  navToTimetable(){
+    this.navCtrl.push(TimetablePage)
+    console.log('Your message here');
   }
 
   ionViewDidLoad() {

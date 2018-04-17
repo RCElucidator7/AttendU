@@ -14,12 +14,14 @@ import { TimetablePage } from '../timetable/timetable';
 export class StudentHomePage {
 
   students: FirebaseListObservable<Student[]> = null;
-  studentID: string;
+  studentListRef$: FirebaseListObservable<Student[]>;
+
 
   constructor(public navCtrl: NavController, public navParams: NavParams, private db: AngularFireDatabase, private afAuth: AngularFireAuth) {
-    this.afAuth.authState.subscribe(student => {
-      if(student) this.studentID = student.uid
-    })
+
+    const studentID = this.navParams.get('sid');
+
+    this.studentListRef$ = this.db.list('student/'+studentID);
   }
 
   navigateToStudentAttend(){
@@ -33,12 +35,6 @@ export class StudentHomePage {
 
   navToDetails(){
     this.navCtrl.push(StudentDetailsPage)
-  }
-
-  getStudentList(): FirebaseListObservable<Student[]> {
-    if(!this.studentID) return;
-    this.students = this.db.list('student/${this.studentID}');
-    return this.students;
   }
 
   ionViewDidLoad() {

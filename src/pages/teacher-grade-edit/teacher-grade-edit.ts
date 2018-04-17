@@ -25,8 +25,6 @@ export class TeacherGradeEditPage {
       //Capture ID as a nav param
       const studentID = this.navParams.get('studentID');
 
-      console.log(studentID);
-
       //set scope of firebase object equal to selected student
       this.studentRef$ = this.database.list('student/'+studentID);
       //this.studentRef$ = this.database.object(`/student-list/${studentID}`);
@@ -42,6 +40,7 @@ export class TeacherGradeEditPage {
       grade: this.grade.grade
     });
 
+    this.navCtrl.pop();
   }
 
   ionViewDidLoad() {

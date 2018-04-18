@@ -13,15 +13,13 @@
 </ion-header>
 
 <ion-content padding>
-  <form id="attend1">
     <div class="spacer" style="width:283.2px;height:75px;"></div>
       <ion-label>Attendance Code</ion-label>
       <ion-item>
-        <ion-input type="text" id="code"></ion-input>
+        <ion-input type="text" [(ngModel)]="code.generatedCode"></ion-input>
       </ion-item>
     <div class="spacer" style="width:283.2px;height:60px;" id="attendU-spacer2"></div>
-  </form>
-  <button id="attend" ion-button color="calm" block large style="color:#FFFFFF;" (click)="attend(code, student)">
+  <button id="attend" ion-button color="calm" block large style="color:#FFFFFF;" (click)="attend(code)">
     <ion-icon name="checkmark-circle-outline"></ion-icon>
   </button>
 

@@ -25,23 +25,7 @@ export class EditStudentPage {
       //set scope of firebase object equal to selected student
       this.studentRef$ = this.database.list('student/'+studentID);
       this.tempRef$ = this.database.list('student');
-
-      /*/Subscribes to the object and assign result to this.student
-      this.studentSubscription = this.studentRef$.subscribe(
-        student => this.student = student);*/
   }
-
-  /*editStudent(updatedStudent: Student){
-    //Update firebase data with new data
-    this.studentRef$.update(updatedStudent.$key,{
-      studentFirstName: updatedStudent.studentFirstName,
-      studentLastName: updatedStudent.studentLastName,
-      studentClass: updatedStudent.studentClass
-    });
-
-    //Send user back to main page
-    this.navCtrl.pop();
-  }*/
 
   addStudentSave(student: Student){
     this.studentRef$.remove();

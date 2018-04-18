@@ -2,6 +2,9 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { TeacherAttendPage } from '../teacher-attend/teacher-attend';
 import { TeacherGradesPage } from '../teacher-grades/teacher-grades';
+import { AngularFireDatabase, FirebaseListObservable } from 'angularfire2/database-deprecated';
+import { AngularFireAuth } from 'angularfire2/auth';
+import { Teacher } from '../../models/teacher/teacher.interface';
 import { TimetablePage } from '../timetable/timetable';
 
 
@@ -11,7 +14,13 @@ import { TimetablePage } from '../timetable/timetable';
 })
 export class TeacherHomePage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  teacherListRef$: FirebaseListObservable<Teacher[]>;
+
+  constructor(public navCtrl: NavController, public navParams: NavParams, private db: AngularFireDatabase, private afAuth: AngularFireAuth) {
+
+    const teacherID = this.navParams.get('tid');
+
+    this.teacherListRef$ = this.db.list('teacher/'+teacherID);
   }
 
   navToAttend(){

@@ -6,6 +6,7 @@ import { AngularFireDatabase, FirebaseListObservable } from 'angularfire2/databa
 import { AngularFireAuth } from 'angularfire2/auth';
 import { Student } from '../../models/student/student.interface';
 import { TimetablePage } from '../timetable/timetable';
+import { DataSnapshot } from '@firebase/database';
 
 @Component({
   selector: 'page-student-home',
@@ -13,19 +14,23 @@ import { TimetablePage } from '../timetable/timetable';
 })
 export class StudentHomePage {
 
-  students: FirebaseListObservable<Student[]> = null;
   studentListRef$: FirebaseListObservable<Student[]>;
 
+  student = {} as Student
 
   constructor(public navCtrl: NavController, public navParams: NavParams, private db: AngularFireDatabase, private afAuth: AngularFireAuth) {
 
     const studentID = this.navParams.get('sid');
+    console.log(studentID)
 
     this.studentListRef$ = this.db.list('student/'+studentID);
   }
 
   navigateToStudentAttend(){
-    this.navCtrl.push(StudentAttendPage)
+    var stuID = this.navParams.get('sid')
+    var stuName = this.navParams.get('name')
+    var stuLast = this.navParams.get('last')
+    this.navCtrl.push(StudentAttendPage, {sid: stuID, name: stuName, last: stuLast})
   }
 
   navToTimetable(){

@@ -3,6 +3,7 @@ import { IonicPage, NavController, NavParams, ToastController } from 'ionic-angu
 import { AdminHomePage } from '../admin-home/admin-home';
 import { FirebaseListObservable, AngularFireDatabase } from 'angularfire2/database-deprecated';
 import { Student } from '../../models/student/student.interface';
+import { Teacher } from '../../models/teacher/teacher.interface';
 import { Observable } from 'rxjs/Observable';
 import { User } from '../../models/users/users.interface';
 import { AngularFireAuth } from 'angularfire2/auth';
@@ -19,6 +20,7 @@ export class LoginPage {
 
   user = {} as User;
   studentListRef$: FirebaseListObservable<Student[]>;
+  teacherListRef$: FirebaseListObservable<Teacher[]>;
 
   ref: FirebaseDatabase;
 
@@ -26,12 +28,7 @@ export class LoginPage {
               private auth: AngularFireAuth, public toastCtrl: ToastController) {
                 this.studentListRef$ = this.db.list('student');
 
-                /*var ref = db.database.ref("Student");
-                ref.orderByChild("email").equalTo("rmconway27@scoil.ie").on("child_added", function(snapshot) {
-                  console.log(snapshot.key)
-                })*/
-                
-                //console.log(this.studentListRef$);
+                this.teacherListRef$ = this.db.list('teacher');
   }
 
 
@@ -40,42 +37,45 @@ export class LoginPage {
   async login(user: User){
 
     //this.ref.orderByChild("email").equalTo
-
+    var i = 0;
 
     try{
       this.studentListRef$.subscribe(
         student => {
           student.map(email =>{
-                if(email.email == user.email) {
-                  this.navCtrl.setRoot(StudentHomePage, {sid: email.$key})
+                if(email.email == user.email && email.password == user.password) {
+                  this.navCtrl.setRoot(StudentHomePage, {sid: email.$key, name: email.studentFirstName, last: email.studentLastName})
+                  i = 1;
                 }
-                else{
-                  let toast = this.toastCtrl.create({
-                    message: 'User ID or password is incorrect',
-                    duration: 5000
-                  });
-                  toast.present();
-          
+                else if(user.email == "admin@scoil.ie" && user.password == "admin"){
+                  this.navCtrl.setRoot(AdminHomePage)
+                  i = 1;
                 }
           })
         });
-      /*if(user.email == "admin@scoil.ie"){
-        this.navCtrl.setRoot(AdminHomePage)
-      }
-      else if(user.email.endsWith("@scoil.ie")){
-        this.navCtrl.setRoot(StudentHomePage)
-      }
-      else if(user.email.endsWith("@teacher.ie")){
-        this.navCtrl.setRoot(TeacherHomePage)
-      }
-      else{
-        let toast = this.toastCtrl.create({
-          message: 'User ID or password is incorrect',
-          duration: 5000
-        });
-        toast.present();
 
-      }*/
+        this.teacherListRef$.subscribe(
+          teacher => {
+            teacher.map(email =>{
+                  if(email.email == user.email && email.password == user.password) {
+                    this.navCtrl.setRoot(TeacherHomePage, {tid: email.$key})
+                    i = 1;
+                  }
+                  else if(user.email == "admin@scoil.ie" && user.password == "admin"){
+                    this.navCtrl.setRoot(AdminHomePage)
+                    i = 1;
+                  }
+            })
+          });
+
+          if(i == 0){
+            let toast = this.toastCtrl.create({
+              message: 'User ID or password is incorrect',
+              duration: 5000
+            });
+            toast.present();
+          }
+          
     }
     catch(e){
       console.error(e);

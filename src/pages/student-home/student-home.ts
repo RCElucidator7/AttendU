@@ -35,11 +35,13 @@ export class StudentHomePage {
 
   navToTimetable(){
     this.navCtrl.push(TimetablePage)
-    console.log('Opening timetable');
   }
 
   navToDetails(){
-    this.navCtrl.push(StudentDetailsPage)
+    var stuID = this.navParams.get('sid')
+    var stuName = this.navParams.get('name')
+    var stuLast = this.navParams.get('last')
+    this.navCtrl.push(StudentDetailsPage, {sid: stuID, name: stuName, last: stuLast})
   }
 
   ionViewDidLoad() {

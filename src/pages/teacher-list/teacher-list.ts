@@ -2,7 +2,6 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, ActionSheetController  } from 'ionic-angular';
 import { FirebaseListObservable, AngularFireDatabase } from 'angularfire2/database-deprecated';
 
-//import { AddStudentPage } from '../add-student/add-student';
 import { Teacher } from '../../models/teacher/teacher.interface';
 import { AddTeacherPage } from '../add-teacher/add-teacher';
 

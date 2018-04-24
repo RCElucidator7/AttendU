@@ -37,9 +37,6 @@ export class EditStudentPage {
       email: this.student.email,
       password: this.student.password
     });
-
-    //Send user back to main page
-    this.navCtrl.pop();
   }
 
   ionViewDidLoad() {

@@ -30,9 +30,6 @@ export class AddTeacherPage {
       email: this.teacher.teacherFirstName + this.teacher.teacherLastName + "@teacher.ie",
       password: "teacher123"
     });
-
-    this.navCtrl.pop();
-
   }
 
 }

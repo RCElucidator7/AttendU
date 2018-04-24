@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { NavController, NavParams } from 'ionic-angular';
 import { AngularFireDatabase, FirebaseListObservable } from 'angularfire2/database-deprecated';
 
 import { Student } from '../../models/student/student.interface';
@@ -30,7 +30,7 @@ export class AddStudentPage {
       password: "password123"
     });
 
-    this.navCtrl.pop();
+    //this.navCtrl.pop();
   }
 
 }

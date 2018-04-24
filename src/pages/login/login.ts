@@ -26,18 +26,13 @@ export class LoginPage {
 
   constructor(public navCtrl: NavController, public navParams: NavParams, private db: AngularFireDatabase, 
               private auth: AngularFireAuth, public toastCtrl: ToastController) {
+                //List to point at the students in the database
                 this.studentListRef$ = this.db.list('student');
-
+                //List to point at the teachers in the database
                 this.teacherListRef$ = this.db.list('teacher');
   }
 
-
-  
-
   async login(user: User){
-
-    //this.ref.orderByChild("email").equalTo
-    var i = 0;
 
     try{
       this.studentListRef$.subscribe(
@@ -45,11 +40,9 @@ export class LoginPage {
           student.map(email =>{
                 if(email.email == user.email && email.password == user.password) {
                   this.navCtrl.setRoot(StudentHomePage, {sid: email.$key, name: email.studentFirstName, last: email.studentLastName})
-                  i = 1;
                 }
                 else if(user.email == "admin@scoil.ie" && user.password == "admin"){
                   this.navCtrl.setRoot(AdminHomePage)
-                  i = 1;
                 }
           })
         });
@@ -59,22 +52,20 @@ export class LoginPage {
             teacher.map(email =>{
                   if(email.email == user.email && email.password == user.password) {
                     this.navCtrl.setRoot(TeacherHomePage, {tid: email.$key})
-                    i = 1;
                   }
                   else if(user.email == "admin@scoil.ie" && user.password == "admin"){
                     this.navCtrl.setRoot(AdminHomePage)
-                    i = 1;
                   }
             })
           });
 
-          if(i == 0){
+          /*if(i == 0){
             let toast = this.toastCtrl.create({
               message: 'User ID or password is incorrect',
               duration: 5000
             });
             toast.present();
-          }
+          }*/
           
     }
     catch(e){

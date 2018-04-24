@@ -14,7 +14,12 @@ export class StudentDetailsPage {
   studentDetailsRef$: FirebaseListObservable<Student[]>;
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public database: AngularFireDatabase) {
-    this.studentDetailsRef$ = this.database.list('student');
+    const StuID = this.navParams.get('sid')
+   
+    this.studentDetailsRef$ = this.database.list('student/'+StuID);
+
+    console.log(this.studentDetailsRef$.forEach(email => email.map(student => console.log(this.student.email))));
+  
   }
 
   ionViewDidLoad() {

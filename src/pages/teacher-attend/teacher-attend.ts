@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, ToastController } from 'ionic-angular';
 import { AngularFireDatabase, FirebaseListObservable } from 'angularfire2/database-deprecated';
+import { TeacherAttendListPage } from '../teacher-attend-list/teacher-attend-list';
 
 @Component({
   selector: 'page-teacher-attend',
@@ -33,6 +34,10 @@ export class TeacherAttendPage {
     toast.present();
     //Send user back to main page
     this.navCtrl.pop();
+  }
+
+  navigateToAttendedList(){
+    this.navCtrl.push(TeacherAttendListPage)
   }
 
   ionViewDidLoad() {

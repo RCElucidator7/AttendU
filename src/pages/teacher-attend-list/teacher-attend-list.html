@@ -9,6 +9,7 @@
   <ion-content padding>
   
     <ion-list>
+      <!--Displays the list of students that are in attendance-->
       <ion-item *ngFor="let student of studentListRef$ | async">
         <h2>Student Name: {{student.student}}</h2>
         <h2>Attended: {{student.attended}}</h2>

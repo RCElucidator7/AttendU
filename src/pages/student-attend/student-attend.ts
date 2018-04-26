@@ -12,50 +12,34 @@ import { Code } from '../../models/code/code.interface';
 
 export class StudentAttendPage {
 
-  code$: FirebaseListObservable<Code[]>
-
+  codeRef$: FirebaseListObservable<Code[]>
   studentListRef$: FirebaseListObservable<Student[]>;
   attendedList$: FirebaseListObservable<{}>;
 
   student = {} as Student;
   code = {} as Code;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, public toastCtrl: ToastController, private database: AngularFireDatabase) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, public toastCtrl: ToastController, private db: AngularFireDatabase) {
     //List for code
     const studentID = this.navParams.get('sid');
 
-    this.studentListRef$ = this.database.list('student/'+studentID);
-    this.attendedList$ = this.database.list('attended');
-    this.code$ = this.database.list('code');
+    this.studentListRef$ = this.db.list('student/'+studentID);
+    this.attendedList$ = this.db.list('attended');
+    this.codeRef$ = this.db.list('code');
   }
 
   attend(code: Code){
-    var i = 0;
+    var i = 1;
     var name = this.navParams.get('name');
     var last = this.navParams.get('last');
-    console.log(name + last)
 
-
-    this.code$.forEach(Gcode =>{
-      Gcode.map(geneCode =>{
-        console.log(geneCode.generatedCode)
-        if(geneCode.generatedCode == code.generatedCode)
-        {
-          i = 1;
-        }
-      })
+    this.codeRef$.subscribe(codeGenerated => {
+      console.log(codeGenerated[0].generateCode)
+      if(codeGenerated[0].generateCode == code.generateCode){
+        console.log("Success")
+        i = 0
+      }
     })
-
-    this.code$.subscribe(
-      generatedList => {
-        generatedList.map(teacherCode =>{
-          console.log(teacherCode.generatedCode)
-          if(teacherCode.generatedCode == code.generatedCode)
-          {
-            i = 1;
-          }
-        })
-      });
     
     if (i == 0){
       this.attendedList$.push({
@@ -70,7 +54,7 @@ export class StudentAttendPage {
       //Send user back to main page
       this.navCtrl.pop();
     }
-    else if (i == 0){
+    else if (i == 1){
       let toast = this.toastCtrl.create({
         message: 'Entered wrong code, try again!',
         duration: 3000

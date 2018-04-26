@@ -1,4 +1,4 @@
 export interface Code{
     key$?: string; 
-    generatedCode: string;
+    generateCode: string;
 }

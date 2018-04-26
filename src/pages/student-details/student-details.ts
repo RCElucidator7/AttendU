@@ -18,7 +18,13 @@ export class StudentDetailsPage {
    
     this.studentDetailsRef$ = this.database.list('student/'+StuID);
 
-    console.log(this.studentDetailsRef$.forEach(email => email.map(student => console.log(this.student.email))));
+    //console.log(this.studentDetailsRef$.forEach(email => email.map(student => console.log(this.student.email))));
+
+    this.studentDetailsRef$.subscribe(details => {
+      details.map(email => {
+        console.log(email)
+      })
+    });
   
   }
 

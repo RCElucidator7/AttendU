@@ -5,8 +5,6 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 import { StatusBar } from '@ionic-native/status-bar';
 import { AngularFireModule} from 'angularfire2';
 import { AngularFireDatabaseModule } from 'angularfire2/database-deprecated';
-import { AngularFirestoreModule, AngularFirestore } from 'angularfire2/firestore';
-import { AngularFireAuth, AngularFireAuthModule } from 'angularfire2/auth';
 
 import { FIREBASE_CREDENTIALS} from './firebase.credentials';
 
@@ -58,9 +56,7 @@ import { TeacherDetailsPage } from '../pages/teacher-details/teacher-details';
     IonicModule.forRoot(MyApp),
     //Initalise afire with creds
     AngularFireModule.initializeApp(FIREBASE_CREDENTIALS),
-    AngularFireDatabaseModule,
-    AngularFirestoreModule,
-    AngularFireAuthModule
+    AngularFireDatabaseModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [

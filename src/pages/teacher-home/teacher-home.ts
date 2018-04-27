@@ -3,7 +3,6 @@ import { NavController, NavParams } from 'ionic-angular';
 import { TeacherAttendPage } from '../teacher-attend/teacher-attend';
 import { TeacherGradesPage } from '../teacher-grades/teacher-grades';
 import { AngularFireDatabase, FirebaseListObservable } from 'angularfire2/database-deprecated';
-import { AngularFireAuth } from 'angularfire2/auth';
 import { Teacher } from '../../models/teacher/teacher.interface';
 import { TimetablePage } from '../timetable/timetable';
 import { TeacherDetailsPage } from '../teacher-details/teacher-details';
@@ -18,7 +17,7 @@ export class TeacherHomePage {
   //reference with student type to point at the database
   teacherListRef$: FirebaseListObservable<Teacher[]>;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, private db: AngularFireDatabase, private afAuth: AngularFireAuth) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, private db: AngularFireDatabase) {
     //Gets the teachers id from the login page
     const teacherID = this.navParams.get('tid');
 

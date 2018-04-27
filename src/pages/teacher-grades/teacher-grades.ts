@@ -2,7 +2,6 @@ import { Component } from '@angular/core';
 import { NavController, NavParams, ActionSheetController } from 'ionic-angular';
 import { FirebaseListObservable, AngularFireDatabase } from 'angularfire2/database-deprecated';
 import { Student } from '../../models/student/student.interface';
-import { EditStudentPage } from '../edit-student/edit-student'; 
 import { TeacherGradeEditPage } from '../teacher-grade-edit/teacher-grade-edit';
 
 @Component({

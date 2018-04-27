@@ -1,11 +1,10 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, ToastController } from 'ionic-angular';
+import { NavController, NavParams, ToastController } from 'ionic-angular';
 import { AdminHomePage } from '../admin-home/admin-home';
 import { FirebaseListObservable, AngularFireDatabase } from 'angularfire2/database-deprecated';
 import { Student } from '../../models/student/student.interface';
 import { Teacher } from '../../models/teacher/teacher.interface';
 import { User } from '../../models/users/users.interface';
-import { AngularFireAuth } from 'angularfire2/auth';
 import { StudentHomePage } from '../student-home/student-home';
 import { TeacherHomePage } from '../teacher-home/teacher-home';
 
@@ -21,12 +20,11 @@ export class LoginPage {
   studentListRef$: FirebaseListObservable<Student[]>;
   teacherListRef$: FirebaseListObservable<Teacher[]>;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, private db: AngularFireDatabase, 
-              private auth: AngularFireAuth, public toastCtrl: ToastController) {
-                //List to point at the students in the database
-                this.studentListRef$ = this.db.list('student');
-                //List to point at the teachers in the database
-                this.teacherListRef$ = this.db.list('teacher');
+  constructor(public navCtrl: NavController, public navParams: NavParams, private db: AngularFireDatabase,  public toastCtrl: ToastController) {
+      //List to point at the students in the database
+      this.studentListRef$ = this.db.list('student');
+      //List to point at the teachers in the database
+      this.teacherListRef$ = this.db.list('teacher');
   }
 
   async login(user: User){

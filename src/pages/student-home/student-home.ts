@@ -3,7 +3,6 @@ import { NavController, NavParams } from 'ionic-angular';
 import { StudentDetailsPage } from '../student-details/student-details';
 import { StudentAttendPage } from '../student-attend/student-attend';
 import { AngularFireDatabase, FirebaseListObservable } from 'angularfire2/database-deprecated';
-import { AngularFireAuth } from 'angularfire2/auth';
 import { Student } from '../../models/student/student.interface';
 import { TimetablePage } from '../timetable/timetable';
 import { StudentGradesPage } from '../student-grades/student-grades';
@@ -20,7 +19,7 @@ export class StudentHomePage {
   //Custom student interface
   student = {} as Student
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, private db: AngularFireDatabase, private afAuth: AngularFireAuth) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, private db: AngularFireDatabase) {
 
     //Get the students id from the login page
     const studentID = this.navParams.get('sid');

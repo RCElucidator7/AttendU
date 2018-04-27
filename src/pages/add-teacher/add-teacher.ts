@@ -1,9 +1,8 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { NavController, NavParams } from 'ionic-angular';
 import { AngularFireDatabase, FirebaseListObservable } from 'angularfire2/database-deprecated';
 
 import { Teacher } from '../../models/teacher/teacher.interface';
-import { query } from '@angular/core/src/animation/dsl';
 
 @Component({
   selector: 'page-add-teacher',

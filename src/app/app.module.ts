@@ -28,6 +28,7 @@ import { TeacherGradesPage } from '../pages/teacher-grades/teacher-grades';
 import { TeacherGradeEditPage } from '../pages/teacher-grade-edit/teacher-grade-edit';
 import { TimetablePage } from '../pages/timetable/timetable';
 import { TeacherAttendListPage } from '../pages/teacher-attend-list/teacher-attend-list';
+import { StudentGradesPage } from '../pages/student-grades/student-grades';
 
 @NgModule({
   declarations: [
@@ -47,7 +48,8 @@ import { TeacherAttendListPage } from '../pages/teacher-attend-list/teacher-atte
     TeacherGradesPage,
     TeacherGradeEditPage,
     TimetablePage,
-    TeacherAttendListPage
+    TeacherAttendListPage,
+    StudentGradesPage
   ],
   imports: [
     BrowserModule,
@@ -76,7 +78,8 @@ import { TeacherAttendListPage } from '../pages/teacher-attend-list/teacher-atte
     TeacherGradesPage,
     TeacherGradeEditPage,
     TimetablePage,
-    TeacherAttendListPage
+    TeacherAttendListPage,
+    StudentGradesPage
   ],
   providers: [
     StatusBar,

@@ -7,6 +7,7 @@ import { AngularFireAuth } from 'angularfire2/auth';
 import { Student } from '../../models/student/student.interface';
 import { TimetablePage } from '../timetable/timetable';
 import { DataSnapshot } from '@firebase/database';
+import { StudentGradesPage } from '../student-grades/student-grades';
 
 @Component({
   selector: 'page-student-home',
@@ -42,6 +43,13 @@ export class StudentHomePage {
     var stuName = this.navParams.get('name')
     var stuLast = this.navParams.get('last')
     this.navCtrl.push(StudentDetailsPage, {sid: stuID, name: stuName, last: stuLast})
+  }
+
+  navToGrades(){
+    var stuID = this.navParams.get('sid')
+    var stuName = this.navParams.get('name')
+    var stuLast = this.navParams.get('last')
+    this.navCtrl.push(StudentGradesPage, {sid: stuID, name: stuName, last: stuLast})
   }
 
   ionViewDidLoad() {

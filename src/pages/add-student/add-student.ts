@@ -10,18 +10,21 @@ import { Student } from '../../models/student/student.interface';
 })
 export class AddStudentPage {
 
+  //custom student interface
   student = {} as Student;
 
+  //reference with student type to point at the database
   studentRef$: FirebaseListObservable<Student[]>
 
   constructor(public navCtrl: NavController, public navParams: NavParams,
      private database: AngularFireDatabase) {
-       //List of students
+       //point at the list of students and store locally
        this.studentRef$ = this.database.list('student');
   }
 
   addStudent(student: Student){
     //Creates object and pushes to firebase
+    //Email and passwords are set by default
     this.studentRef$.push({
       studentFirstName: this.student.studentFirstName,
       studentLastName: this.student.studentLastName,
@@ -29,8 +32,6 @@ export class AddStudentPage {
       email: this.student.studentFirstName + this.student.studentLastName + "@scoil.ie",
       password: "password123"
     });
-
-    //this.navCtrl.pop();
   }
 
 }

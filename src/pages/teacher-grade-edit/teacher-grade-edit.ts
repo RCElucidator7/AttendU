@@ -12,9 +12,10 @@ import { grade } from '../../models/grades/grade.interface';
 })
 export class TeacherGradeEditPage {
 
-  studentSubscription: Subscription;
+  //reference with student type to point at the database
   studentRef$: FirebaseListObservable<Student[]>
 
+  //Custom student and grade interface
   student = {} as Student;
   grade = {} as grade
 
@@ -27,14 +28,10 @@ export class TeacherGradeEditPage {
 
       //set scope of firebase object equal to selected student
       this.studentRef$ = this.database.list('student/'+studentID);
-      //this.studentRef$ = this.database.object(`/student-list/${studentID}`);
-
-      /*/Subscribes to the object and assign result to this.student
-      this.studentSubscription = this.studentRef$.subscribe(
-        student => this.student = student);*/
   }
 
   addGradeSave(grade: grade){
+    //Push the students grade details to the student
     this.studentRef$.push({
       subject: this.grade.subject,
       grade: this.grade.grade
@@ -42,9 +39,4 @@ export class TeacherGradeEditPage {
 
     this.navCtrl.pop();
   }
-
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad TeacherGradeEditPage');
-  }
-
 }

@@ -4,13 +4,10 @@ import { AdminHomePage } from '../admin-home/admin-home';
 import { FirebaseListObservable, AngularFireDatabase } from 'angularfire2/database-deprecated';
 import { Student } from '../../models/student/student.interface';
 import { Teacher } from '../../models/teacher/teacher.interface';
-import { Observable } from 'rxjs/Observable';
 import { User } from '../../models/users/users.interface';
 import { AngularFireAuth } from 'angularfire2/auth';
 import { StudentHomePage } from '../student-home/student-home';
-import { isTrueProperty } from 'ionic-angular/util/util';
 import { TeacherHomePage } from '../teacher-home/teacher-home';
-import { FirebaseDatabase } from '@firebase/database-types';
 
 @Component({
   selector: 'page-login',
@@ -18,11 +15,11 @@ import { FirebaseDatabase } from '@firebase/database-types';
 })
 export class LoginPage {
 
+  //custom user interface
   user = {} as User;
+  //references with student and teacher type to point at the database
   studentListRef$: FirebaseListObservable<Student[]>;
   teacherListRef$: FirebaseListObservable<Teacher[]>;
-
-  ref: FirebaseDatabase;
 
   constructor(public navCtrl: NavController, public navParams: NavParams, private db: AngularFireDatabase, 
               private auth: AngularFireAuth, public toastCtrl: ToastController) {
@@ -34,10 +31,15 @@ export class LoginPage {
 
   async login(user: User){
 
+    //Try loop to try log the user in
     try{
+      //Subscribe is used to loop through all the objects
       this.studentListRef$.subscribe(
         student => {
+          //Map grants access to the values inside the objects
           student.map(email =>{
+                //Check if the email and password the user has input matches any of the emails or passwords in the database
+                //Else if used to log the admin in(hardcoded so the admin and access with ease if problems occur)
                 if(email.email == user.email && email.password == user.password) {
                   this.navCtrl.setRoot(StudentHomePage, {sid: email.$key, name: email.studentFirstName, last: email.studentLastName})
                 }
@@ -50,6 +52,8 @@ export class LoginPage {
         this.teacherListRef$.subscribe(
           teacher => {
             teacher.map(email =>{
+                  //Check if the email and password the user has input matches any of the emails or passwords in the database
+                  //Else if used to log the admin in(hardcoded so the admin and access with ease if problems occur)
                   if(email.email == user.email && email.password == user.password) {
                     this.navCtrl.setRoot(TeacherHomePage, {tid: email.$key})
                   }
@@ -58,22 +62,10 @@ export class LoginPage {
                   }
             })
           });
-
-          /*if(i == 0){
-            let toast = this.toastCtrl.create({
-              message: 'User ID or password is incorrect',
-              duration: 5000
-            });
-            toast.present();
-          }*/
-          
     }
     catch(e){
+      //Catches any errors
       console.error(e);
     }
-  }
-
-  navigateToAdminHome(){ 
-    this.navCtrl.setRoot(AdminHomePage)
   }
 }

@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, ToastController } from 'ionic-angular';
+import { NavController, NavParams, ToastController } from 'ionic-angular';
 import { AngularFireDatabase, FirebaseListObservable } from 'angularfire2/database-deprecated';
 import { TeacherAttendListPage } from '../teacher-attend-list/teacher-attend-list';
 
@@ -9,8 +9,7 @@ import { TeacherAttendListPage } from '../teacher-attend-list/teacher-attend-lis
 })
 export class TeacherAttendPage {
 
-  genecode: string;
-
+  //Creates a list observable with a type object
   code$: FirebaseListObservable<{}>
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public toastCtrl: ToastController, private database: AngularFireDatabase) {
@@ -19,10 +18,13 @@ export class TeacherAttendPage {
   }
 
   generateCode(){
+    //Generates random 9 digit code
     var code = Math.floor(100000000 + Math.random() * 900000000)
 
+    //Removes the original code
     this.code$.remove();
 
+    //Push the new code to the database
     this.code$.push({
       generateCode: code
     });
@@ -36,12 +38,8 @@ export class TeacherAttendPage {
     this.navCtrl.pop();
   }
 
+  //Navigates to the attended list of students
   navigateToAttendedList(){
     this.navCtrl.push(TeacherAttendListPage)
   }
-
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad TeacherAttendPage');
-  }
-
 }

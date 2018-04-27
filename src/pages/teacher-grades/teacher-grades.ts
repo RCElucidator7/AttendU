@@ -11,6 +11,7 @@ import { TeacherGradeEditPage } from '../teacher-grade-edit/teacher-grade-edit';
 })
 export class TeacherGradesPage {
 
+  //reference with student type to point at the database
   studentListRef$: FirebaseListObservable<Student[]>;
 
   constructor(public navCtrl: NavController, public navParams: NavParams,
@@ -42,7 +43,5 @@ export class TeacherGradesPage {
         }
       ]
     }).present();
-
   }
-
 }

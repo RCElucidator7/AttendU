@@ -11,18 +11,21 @@ import { query } from '@angular/core/src/animation/dsl';
 })
 export class AddTeacherPage {
 
+  //custom teacher interface
   teacher = {} as Teacher;
 
+  //reference with teacher type to point at the database
   teacherRef$: FirebaseListObservable<Teacher[]>
 
   constructor(public navCtrl: NavController, public navParams: NavParams,
      private database: AngularFireDatabase) {
-       //List of teachers
+       //Point at the list of teachers and store locally
        this.teacherRef$ = this.database.list('teacher');
   }
 
   addTeacher(teacher: Teacher){
     //Creates object and pushes to firebase
+    //Email and passwords are set by default
     this.teacherRef$.push({
       teacherFirstName: this.teacher.teacherFirstName,
       teacherLastName: this.teacher.teacherLastName,

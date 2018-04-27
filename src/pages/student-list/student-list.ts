@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, ActionSheetController } from 'ionic-angular';
+import { NavController, NavParams, ActionSheetController } from 'ionic-angular';
 import { FirebaseListObservable, AngularFireDatabase } from 'angularfire2/database-deprecated';
-
 import { AddStudentPage } from '../add-student/add-student';
 import { Student } from '../../models/student/student.interface';
 import { EditStudentPage } from '../edit-student/edit-student'; 
@@ -12,6 +11,7 @@ import { EditStudentPage } from '../edit-student/edit-student';
 })
 export class StudentListPage {
 
+  //reference with student type to point at the database
   studentListRef$: FirebaseListObservable<Student[]>;
 
   constructor(public navCtrl: NavController, public navParams: NavParams,
@@ -54,6 +54,7 @@ export class StudentListPage {
 
   }
 
+  //Navigates to the add student page
   navigateToAddStudent(){
     this.navCtrl.push(AddStudentPage)
   }

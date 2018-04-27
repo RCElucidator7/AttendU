@@ -9,9 +9,9 @@
 
 <ion-content padding>
     <ion-list>
-        <ion-item *ngFor="let student of studentDetailsRef$ | async">
-          <h2 *ngIf="student && student.$value">{{student.$key}}:</h2>
-          <h2>{{student.$value}}</h2>
+        <ion-item *ngFor="let teacher of teacherListRef$ | async">
+          <h2 *ngIf="teacher && teacher.$value">{{teacher.$key}}:</h2>
+          <h2>{{teacher.$value}}</h2>
           </ion-item>
       </ion-list>
 </ion-content>

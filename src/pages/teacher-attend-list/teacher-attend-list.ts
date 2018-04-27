@@ -9,6 +9,7 @@ import { FirebaseListObservable, AngularFireDatabase } from 'angularfire2/databa
 })
 export class TeacherAttendListPage {
 
+  //reference with student type to point at the database
   studentListRef$: FirebaseListObservable<{}>;
 
   constructor(public navCtrl: NavController, public navParams: NavParams,
@@ -16,10 +17,5 @@ export class TeacherAttendListPage {
 
       //Pointing list at firebase to node
       this.studentListRef$ = this.database.list('attended');
-
-  }
-
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad TeacherAttendListPage');
   }
 }

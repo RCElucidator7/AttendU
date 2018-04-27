@@ -2,7 +2,6 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { AngularFireDatabase, FirebaseListObservable} from 'angularfire2/database-deprecated'
 
-import { Subscription } from 'rxjs/Subscription';
 import { Student } from '../../models/student/student.interface';
 
 @Component({
@@ -11,15 +10,18 @@ import { Student } from '../../models/student/student.interface';
 })
 export class EditStudentPage {
 
+  //references with student type to point at the database
   studentRef$: FirebaseListObservable<Student[]>
   tempRef$: FirebaseListObservable<Student[]>
 
+  //Custom student interface
   student = {} as Student;
 
   constructor(public navCtrl: NavController, 
     public navParams: NavParams,
     public database: AngularFireDatabase) {
 
+      //gets the student ID pushed through from the student list page
       const studentID = this.navParams.get('studentID');
 
       //set scope of firebase object equal to selected student
@@ -28,8 +30,10 @@ export class EditStudentPage {
   }
 
   addStudentSave(student: Student){
+    //Remove value of student
     this.studentRef$.remove();
 
+    //Push the edited values to the database
     this.tempRef$.push({
       studentFirstName: this.student.studentFirstName,
       studentLastName: this.student.studentLastName,

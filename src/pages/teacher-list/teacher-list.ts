@@ -13,6 +13,7 @@ import { AddTeacherPage } from '../add-teacher/add-teacher';
 })
 export class TeacherListPage {
 
+  //reference with student type to point at the database
   teacherListRef$: FirebaseListObservable<Teacher[]>;
 
   constructor(public navCtrl: NavController, public navParams: NavParams,
@@ -48,6 +49,7 @@ export class TeacherListPage {
 
   }
 
+  //Navigates to the addTeacher Page
   navigateToAddStudent(){
     this.navCtrl.push(AddTeacherPage)
   }
